@@ -6,9 +6,8 @@ import java.awt.event.KeyAdapter;
 public class TeclaListener extends KeyAdapter {
 	private ImagenNave imagenNave;
 
-	Public TeclaListener(ImagenNave imagenNave){
+	public TeclaListener(ImagenNave imagenNave){
 		this.imagenNave= imagenNave;
-
 	}
 
 @Override
