@@ -7,5 +7,4 @@ public class Principal {
 		Ventana ventana = new Ventana(); 
 		
 	}
-
 }

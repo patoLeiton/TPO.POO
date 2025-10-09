@@ -13,7 +13,7 @@ public class ImagenNave extends JLabel {
 	public ImagenNave() {
 		ancho= 50;
 		alto= 50;
-		Image imagen= new ImageIcon("nave.jpg").getImage();
+		Image imagen= new ImageIcon("image/nave.jpg").getImage();
 		Image ImagenAEscala = imagen.getScaledInstance(ancho, alto,Image.SCALE_SMOOTH);
 		ImageIcon icono= new ImageIcon(ImagenAEscala);
 		setIcon(icono);
