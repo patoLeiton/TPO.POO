@@ -19,12 +19,14 @@ public class PanelPrincipal extends JPanel {
 		alto = 600;
 		setLayout(null);
 		setPreferredSize(new Dimension(ancho,alto));
+		
+		
 		imagenNave= new ImagenNave();
 		add(imagenNave);
 		imagenNave.mover(400,300);
 		
 		setFocusable(true);
-		TeclaListener teclaListener = new TeclaListener();
+		TeclaListener teclaListener = new TeclaListener(imagenNave);
 		addKeyListener(teclaListener);
 		
 	}
