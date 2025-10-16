@@ -6,6 +6,8 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
+import Controlador.JuegoController;
+
 
 
 public class PanelPrincipal extends JPanel {

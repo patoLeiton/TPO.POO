@@ -4,8 +4,10 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Modelo.Observador;
 
-public class ImagenNave extends JLabel {
+
+public class ImagenNave extends JLabel implements Observador {
 	
 	private int ancho;
 	private int alto;
