@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Espacio;
 import Modelo.NaveJugador;
 import Modelo.Observador;
+import Modelo.Rayo;
 
 
 
@@ -22,8 +23,18 @@ public class JuegoController {
 
     public void moverNaveJugador(int x){
         NaveJugador naveJugador = espacio.getNaveJugador();
-        naveJugador.mover(x);
+        naveJugador.mover(x );
     }
+
+     public void disparar(Observador observador) {
+      NaveJugador naveJugador = espacio.getNaveJugador();
+      Rayo disparo = naveJugador.disparar(observador);
+      espacio.agregar(disparo);
+   }
+
+   public void actualizarPosiciones(){
+    espacio.actualizarPosiciones();
+   }
 
 }
     

@@ -1,35 +1,17 @@
 package Modelo;
 
 
-public class NaveJugador {
-    private Observador observador;
-    private int x;
-    private int y;
-    private int velocidad;
-    private int xMax;
+public class NaveJugador extends ObjetoJuego {
+   
 
 
     public NaveJugador(int x, int y, Observador observador, int anchoEspacio){
-        this.x =x;
-        this.y= y;
-        velocidad= 10;
-        this.observador= observador;
-        observador.mover(x, y);
-        this.xMax= anchoEspacio-observador.getAncho();
-
+        super(x, y,10, observador, anchoEspacio);
     }
 
-    public void moverDerecha(){
-        if(x + velocidad< xMax){
-          
-        x+= velocidad;
-        observador.mover(x, y);
+    public Rayo disparar(Observador observadorDisparo){
+        int posicionX= getPosicionMediaX();
+        Rayo disparo= new Rayo(posicionX, getY(), observadorDisparo, getAnchoEspacio() );
+        return disparo;
     }
-}
-
-    public void mover(int x){
-        this.x=x;
-        observador.mover(x,y);
-    }
-
 }

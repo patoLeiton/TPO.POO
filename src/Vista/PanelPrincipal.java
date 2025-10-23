@@ -8,8 +8,8 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-
-
+import java.awt.event.*;
+import javax.swing.Timer;
 
 
 import javax.swing.JPanel;
@@ -40,14 +40,13 @@ public class PanelPrincipal extends JPanel {
 	public PanelPrincipal() {
 
 		intercepatMouse();
+		simularMovimiento();
+
+		interceptarTecla();
 
 		
-<<<<<<< Updated upstream
 
 
-=======
-		
->>>>>>> Stashed changes
 		ancho = 800;
 		alto = 600;
 		setLayout(null);
@@ -57,30 +56,21 @@ public class PanelPrincipal extends JPanel {
 		
 		imagenNave= new ImagenNave();
 		add(imagenNave);
-		imagenNave.mover(400,300);
+		imagenNave.mover(200,100);
 
-		int posicionNaveJugadorX= 400;
-		int posicionNaveJugadorY= 300;
+		int posicionNaveJugadorX= 200;
+		int posicionNaveJugadorY= 100;
 		juegoController= new JuegoController(ancho,alto,posicionNaveJugadorX,posicionNaveJugadorY,imagenNave);
 		
 		setFocusable(true);
 		TeclaListener teclaListener = new TeclaListener(imagenNave);
-		addKeyListener(new KeyAdapter() {
-		@Override
-		public void keyPressed(KeyEvent evento){
-
-			int tecla= evento.getKeyCode();
-			if(tecla ==KeyEvent.VK_RIGHT){
-				juegoController.moverNaveJugadorDerecha();
-
-			}
+		
 		}
-	});
 
 	
 	
 
-}
+
 
 
 
@@ -96,8 +86,38 @@ private void intercepatMouse(){
 
 }
 
+private void interceptarTecla(){
 
+	setFocusable(true);
+	addKeyListener(new KeyAdapter() {
+		public void keyPressed(KeyEvent evento){
+
+			int tecla= evento.getKeyCode();
+			if(tecla ==KeyEvent.VK_RIGHT){
+				juegoController.moverNaveJugadorDerecha();
+			} else if(tecla==KeyEvent.VK_SPACE){
+				ImagenRayo imagenRayo = new ImagenRayo();
+				add(imagenRayo);
+				juegoController.disparar(imagenRayo);
+			}
+		}
+	});
 
 }
+
+private void simularMovimiento(){
+	Timer gameLoop = new Timer(20, new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            juegoController.actualizarPosiciones();
+         }
+      });
+      gameLoop.start();
+   }
+	
+}
+
+
+
+
 
 
