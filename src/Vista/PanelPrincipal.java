@@ -42,8 +42,12 @@ public class PanelPrincipal extends JPanel {
 		intercepatMouse();
 
 		
+<<<<<<< Updated upstream
 
 
+=======
+		
+>>>>>>> Stashed changes
 		ancho = 800;
 		alto = 600;
 		setLayout(null);
