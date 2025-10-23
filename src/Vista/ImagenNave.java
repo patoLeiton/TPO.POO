@@ -11,7 +11,17 @@ public class ImagenNave extends JLabel implements Observador {
 	
 	private int ancho;
 	private int alto;
+
+	public int getAncho(){
+		return ancho;
+	}
 	
+    public void mover(int x, int y) {
+		
+		setBounds(x, y, ancho, alto);
+		
+	}
+
 	public ImagenNave() {
 		ancho= 50;
 		alto= 50;
@@ -25,11 +35,7 @@ public class ImagenNave extends JLabel implements Observador {
 	
 	}
 	
-	public void mover(int x, int y) {
-		
-		setBounds(x, y, ancho, alto);
-		
-	}
+	
 	
 
 }

@@ -10,7 +10,7 @@ public class JuegoController {
     private Espacio espacio;
 
     public JuegoController(int anchoEspacio, int altoEspacio, int posicionNaveJugadorX, int posicionNaveJugadorY, Observador observadorNave){
-        espacio= new Espacio(anchoEspacio, altoEspacio,posicionNaveJugadorX,posicionNaveJugadorY, observadorNave);
+        espacio= new Espacio(anchoEspacio, altoEspacio, posicionNaveJugadorX, posicionNaveJugadorY, observadorNave);
 
     }
 
@@ -18,8 +18,11 @@ public class JuegoController {
         NaveJugador nave = espacio.getNaveJugador();
         nave.moverDerecha();
 
+    }
 
-
+    public void moverNaveJugador(int x){
+        NaveJugador naveJugador = espacio.getNaveJugador();
+        naveJugador.mover(x);
     }
 
 }

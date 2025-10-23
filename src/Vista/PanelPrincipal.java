@@ -3,16 +3,32 @@ package Vista;
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
+
+
 
 import javax.swing.JPanel;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import Controlador.JuegoController;
+import Vista.TeclaListener;
+
+
 
 
 
 public class PanelPrincipal extends JPanel {
 
 	private JuegoController juegoController;
+	
+
 	
 	private int ancho;
 	private int alto;
@@ -22,12 +38,18 @@ public class PanelPrincipal extends JPanel {
 	
 	
 	public PanelPrincipal() {
+
+		intercepatMouse();
+
 		
+
+
 		ancho = 800;
 		alto = 600;
 		setLayout(null);
 		setPreferredSize(new Dimension(ancho,alto));
-		
+
+
 		
 		imagenNave= new ImagenNave();
 		add(imagenNave);
@@ -38,7 +60,7 @@ public class PanelPrincipal extends JPanel {
 		juegoController= new JuegoController(ancho,alto,posicionNaveJugadorX,posicionNaveJugadorY,imagenNave);
 		
 		setFocusable(true);
-		//TeclaListener teclaListener = new TeclaListener();
+		TeclaListener teclaListener = new TeclaListener(imagenNave);
 		addKeyListener(new KeyAdapter() {
 		@Override
 		public void keyPressed(KeyEvent evento){
@@ -51,8 +73,25 @@ public class PanelPrincipal extends JPanel {
 		}
 	});
 
+	
+	
 
-	}
+}
+
+
+
+private void intercepatMouse(){
+	addMouseMotionListener(new MouseMotionAdapter(){
+
+		@Override
+		public void mouseMoved(MouseEvent e){
+			juegoController.moverNaveJugador(e.getX());
+		}
+	});
+
+
+}
+
 
 
 }

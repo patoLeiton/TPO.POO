@@ -6,6 +6,7 @@ public class Ventana extends JFrame{
 	
 	private PanelPrincipal panelPrincipal;
 	
+	
 	public Ventana() {
 		
 		panelPrincipal= new PanelPrincipal();
@@ -13,6 +14,11 @@ public class Ventana extends JFrame{
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
+
+		
+		
+
+
 	}
 	
 	

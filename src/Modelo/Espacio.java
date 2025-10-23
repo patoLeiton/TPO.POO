@@ -8,8 +8,7 @@ public class Espacio {
     public Espacio(int ancho, int alto, int posicionNaveJugadorX, int posicionNaveJugadorY, Observador imagenNave) {
         this.ancho= ancho;
         this.alto= alto;
-
-        naveJugador= new NaveJugador(posicionNaveJugadorX,posicionNaveJugadorY, imagenNave);
+        naveJugador= new NaveJugador(posicionNaveJugadorX,posicionNaveJugadorY, imagenNave,ancho);
 
     }
 
@@ -17,7 +16,5 @@ public class Espacio {
         return naveJugador;
 
     }
-
-
 
 }
