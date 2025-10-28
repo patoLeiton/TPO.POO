@@ -2,6 +2,8 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -26,18 +28,20 @@ public class PanelPrincipal extends JPanel {
         setPreferredSize(new Dimension(ancho, alto));
         setBackground(Color.BLACK);
 
-        // Crear la nave del jugador
-        imagenNave = new ImagenNave();
-        add(imagenNave);
-        
+        // Crear la nave del jugador primero
         int posicionNaveJugadorX = ancho / 2 - 25;
-        int posicionNaveJugadorY = alto - 100; // Más cerca del borde inferior
-        imagenNave.mover(posicionNaveJugadorX, posicionNaveJugadorY);
+        int posicionNaveJugadorY = alto - 80;
+        
+        imagenNave = new ImagenNave();
+        imagenNave.setBounds(posicionNaveJugadorX, posicionNaveJugadorY, 50, 30);
+        add(imagenNave);
 
+        // Inicializar el controlador
         juegoController = new JuegoController(ancho, alto, posicionNaveJugadorX, posicionNaveJugadorY, imagenNave);
         
-        // Crear las naves enemigas
+        // Crear las naves enemigas y escudos
         crearEnemigos();
+        crearEscudos();
 
         setFocusable(true);
         TeclaListener teclaListener = new TeclaListener(juegoController);
@@ -46,52 +50,58 @@ public class PanelPrincipal extends JPanel {
         intercepatMouse();
         interceptarTecla();
         simularMovimiento();
+        
+        System.out.println("Panel inicializado. Componentes: " + getComponentCount());
     }
 
     private void crearEnemigos() {
         // Posicionamiento según la imagen original de Space Invaders
-        int startX = 50;  // Más cerca del borde izquierdo
-        int startY = 30;  // Más arriba
-        int espacioX = 55; // Espacio horizontal entre enemigos
-        int espacioY = 45; // Espacio vertical entre filas
+        int startX = 80;  
+        int startY = 50;  
+        int espacioX = 60; 
+        int espacioY = 50; 
+        
+        System.out.println("Creando enemigos...");
         
         // Crear 2 filas de enemigos tipo 0 (calamares - arriba)
         for (int fila = 0; fila < 2; fila++) {
-            for (int columna = 0; columna < 11; columna++) { // 11 columnas como en la imagen
+            for (int columna = 0; columna < 11; columna++) {
                 ImagenEnemiga imagenEnemiga = new ImagenEnemiga(0);
-                add(imagenEnemiga);
                 int x = startX + (columna * espacioX);
                 int y = startY + (fila * espacioY);
-                imagenEnemiga.mover(x, y);
+                imagenEnemiga.setBounds(x, y, 40, 30);
+                add(imagenEnemiga);
                 juegoController.crearNaveEnemiga(x, y, imagenEnemiga);
+                System.out.println("Enemigo creado en: " + x + ", " + y);
             }
         }
         
         // Crear 2 filas de enemigos tipo 1 (cangrejos - medio)
         for (int fila = 2; fila < 4; fila++) {
-            for (int columna = 0; columna < 11; columna++) { // 11 columnas como en la imagen
+            for (int columna = 0; columna < 11; columna++) {
                 ImagenEnemiga imagenEnemiga = new ImagenEnemiga(1);
-                add(imagenEnemiga);
                 int x = startX + (columna * espacioX);
                 int y = startY + (fila * espacioY);
-                imagenEnemiga.mover(x, y);
+                imagenEnemiga.setBounds(x, y, 40, 30);
+                add(imagenEnemiga);
                 juegoController.crearNaveEnemiga(x, y, imagenEnemiga);
+                System.out.println("Enemigo creado en: " + x + ", " + y);
             }
         }
-        
-        // Crear escudos
-        crearEscudos();
     }
     
     private void crearEscudos() {
-        // Posicionamiento de escudos como en la imagen original
-        int yEscudo = alto - 150; // Posición vertical de los escudos
-        int[] posicionesX = {100, 250, 480, 630}; // Posiciones horizontales específicas
+        // Posicionamiento de escudos
+        int yEscudo = alto - 150; 
+        int[] posicionesX = {120, 280, 440, 600}; 
+        
+        System.out.println("Creando escudos...");
         
         for (int i = 0; i < 4; i++) {
             ImagenEscudo imagenEscudo = new ImagenEscudo();
+            imagenEscudo.setBounds(posicionesX[i], yEscudo, 60, 45);
             add(imagenEscudo);
-            imagenEscudo.mover(posicionesX[i], yEscudo);
+            System.out.println("Escudo creado en: " + posicionesX[i] + ", " + yEscudo);
         }
     }
 

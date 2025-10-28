@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.Escudo;
 import Modelo.Espacio;
 import Modelo.NaveEnemiga;
 import Modelo.NaveJugador;
@@ -16,6 +17,11 @@ public class JuegoController {
     public void crearNaveEnemiga(int x, int y, Observador observador) {
         NaveEnemiga enemiga = new NaveEnemiga(x, y, observador, espacio.getNaveJugador().getAnchoEspacio());
         espacio.agregarNaveEnemiga(enemiga);
+    }
+    
+    public void crearEscudo(int x, int y, Observador observador) {
+        Escudo escudo = new Escudo(x, y, observador, espacio.getNaveJugador().getAnchoEspacio());
+        espacio.agregarEscudo(escudo);
     }
 
     public void moverNaveJugadorDerecha() {
@@ -41,5 +47,21 @@ public class JuegoController {
 
     public void actualizarPosiciones() {
         espacio.actualizarPosiciones();
+    }
+    
+    public int getPuntuacion() {
+        return espacio.getPuntuacion();
+    }
+    
+    public int getEnemigosRestantes() {
+        return espacio.getEnemigosRestantes();
+    }
+    
+    public boolean hayVictoria() {
+        return espacio.hayVictoria();
+    }
+    
+    public boolean hayGameOver() {
+        return espacio.hayGameOver();
     }
 }
