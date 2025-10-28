@@ -1,24 +1,15 @@
 package Vista;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.*;
 import javax.swing.Timer;
-
-
 import javax.swing.JPanel;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 import Controlador.JuegoController;
-import Vista.TeclaListener;
 
 
 
@@ -63,39 +54,24 @@ public class PanelPrincipal extends JPanel {
 		juegoController= new JuegoController(ancho,alto,posicionNaveJugadorX,posicionNaveJugadorY,imagenNave);
 		
 		setFocusable(true);
-		TeclaListener teclaListener = new TeclaListener(imagenNave);
-		
-		}
-
-	
-	
-
-
-
-
+		TeclaListener teclaListener = new TeclaListener(juegoController);
+		addKeyListener(teclaListener);
+	}
 
 private void intercepatMouse(){
 	addMouseMotionListener(new MouseMotionAdapter(){
-
 		@Override
 		public void mouseMoved(MouseEvent e){
 			juegoController.moverNaveJugador(e.getX());
 		}
 	});
-
-
 }
 
 private void interceptarTecla(){
-
-	setFocusable(true);
-	addKeyListener(new KeyAdapter() {
-		public void keyPressed(KeyEvent evento){
-
-			int tecla= evento.getKeyCode();
-			if(tecla ==KeyEvent.VK_RIGHT){
-				juegoController.moverNaveJugadorDerecha();
-			} else if(tecla==KeyEvent.VK_SPACE){
+    addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent evento) {
+            if(evento.getKeyCode() == KeyEvent.VK_SPACE) {
 				ImagenRayo imagenRayo = new ImagenRayo();
 				add(imagenRayo);
 				juegoController.disparar(imagenRayo);

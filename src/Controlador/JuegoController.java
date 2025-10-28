@@ -17,13 +17,17 @@ public class JuegoController {
 
     public void moverNaveJugadorDerecha(){
         NaveJugador nave = espacio.getNaveJugador();
-        nave.moverDerecha();
+        nave.mover(nave.getX() + nave.getVelocidad(), nave.getY());
+    }
 
+    public void moverNaveJugadorIzquierda(){
+        NaveJugador nave = espacio.getNaveJugador();
+        nave.mover(nave.getX() - nave.getVelocidad(), nave.getY());
     }
 
     public void moverNaveJugador(int x){
         NaveJugador naveJugador = espacio.getNaveJugador();
-        naveJugador.mover(x );
+        naveJugador.mover(x, naveJugador.getY());
     }
 
      public void disparar(Observador observador) {

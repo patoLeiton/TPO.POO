@@ -38,16 +38,28 @@ public int getY(){
       observador.mover(x, y);
    }
    public void mover(int x, int y) {
-		if (x < xMax) {
-			this.x = x;
-			this.y = y;
-			observador.mover(x, y);
-		}
-	}
+        // Asegurar que x esté dentro de los límites
+        if (x < 0) {
+            x = 0;
+        } else if (x > xMax) {
+            x = xMax;
+        }
+        this.x = x;
+        this.y = y;
+        observador.mover(x, y);
+    }
 	
    
+   public int getX() {
+      return x;
+   }
+
+   public int getVelocidad() {
+      return velocidad;
+   }
+
    public Observador getObservador() {
-		return observador;
+      return observador;
 	}
 
     public int getAnchoEspacio() {
