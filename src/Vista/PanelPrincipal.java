@@ -60,7 +60,7 @@ public class PanelPrincipal extends JPanel {
 
 		int posicionNaveJugadorX= 200;
 		int posicionNaveJugadorY= 100;
-		juegoController= new JuegoController(ancho,alto,posicionNaveJugadorX,posicionNaveJugadorY,imagenNave);
+		juegoController= new JuegoController(ancho,alto,posicionNaveJugadorX, posicionNaveJugadorY,imagenNave);
 		
 		setFocusable(true);
 		TeclaListener teclaListener = new TeclaListener(imagenNave);
