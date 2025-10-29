@@ -1,5 +1,6 @@
 package Vista;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -7,20 +8,44 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.awt.image.BufferedImage;
+import java.awt.Graphics;
+import java.awt.Color;
+
+
+
+
+
+
+
+
 import Modelo.Dificultad;
 
 public class MainMenu extends JPanel {
     private Ventana ventana;
+    private BufferedImage fondo = null;
 
     public MainMenu(Ventana ventana) {
         this.ventana = ventana;
         setLayout(null);
         setOpaque(true);
         setPreferredSize(new Dimension(800,600));
-        setBackground(java.awt.Color.BLACK);
+        setBackground(java.awt.Color.MAGENTA);
+
+        try {
+            File f = new File("image/BackgroundMenu.jpg");
+            if (f.exists()) {
+                fondo = ImageIO.read(f);
+            }
+        } catch (Exception e) {
+            // si falla, dejamos fondo == null y seguirá usando el color de fondo
+            fondo = null;
+        }
+
         // Título
     JLabel title = new JLabel("SPACE INVADERS - MENU");
-    title.setFont(new Font("Monospaced", Font.BOLD, 28));
+    title.setFont(new Font("Monospaced", Font.ITALIC , 28));
     title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     // centrar el título en el panel (ancho 800 -> centro 400)
     title.setBounds(200, 80, 400, 40);
@@ -56,8 +81,26 @@ public class MainMenu extends JPanel {
         });
         add(salir);
         // Hacer botones más visibles en fondo oscuro
-        jugar.setBackground(java.awt.Color.LIGHT_GRAY);
-        opciones.setBackground(java.awt.Color.LIGHT_GRAY);
-        salir.setBackground(java.awt.Color.LIGHT_GRAY);
+        jugar.setBackground( new Color(0xFF5C77));
+        opciones.setBackground( new Color(0xFF5C77));
+        salir.setBackground( new Color(0xFF5C77));
+
+        jugar.setFont(new Font("Monospaced", Font.ITALIC , 20));
+        opciones.setFont(new Font("Monospaced", Font.ITALIC , 20));
+        salir.setFont(new Font("Monospaced", Font.ITALIC , 20 ));
+
+        jugar.setForeground(new Color(0xFFE6EA));
+        opciones.setForeground(new Color(0xFFE6EA));
+        salir.setForeground(new Color(0xFFE6EA));
+
+
     }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // dibujar imagen de fondo (si existe) escalada al tamaño del panel
+        if (fondo != null) {
+            g.drawImage(fondo, 0, 0, getWidth(), getHeight(), null);
+        }
+}
 }
