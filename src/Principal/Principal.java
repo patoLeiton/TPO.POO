@@ -1,10 +1,13 @@
 package Principal;
 
-import Vista.Ventana; 
+import javax.swing.SwingUtilities;
+import Vista.Ventana;
 
 public class Principal {
-	public static void main(String[]largs) {
-		Ventana ventana = new Ventana(); 
-		
+	public static void main(String[] largs) {
+		// Start Swing UI on the Event Dispatch Thread
+		SwingUtilities.invokeLater(() -> {
+			new Ventana();
+		});
 	}
 }
