@@ -10,8 +10,6 @@ public class ColisionDetector {
         int y1 = obj1.getY();
         int x2 = obj2.getX();
         int y2 = obj2.getY();
-        
-        // Asumimos alto proporcional al ancho para simplificar
         int alto1 = ancho1; 
         int alto2 = ancho2;
         

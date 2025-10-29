@@ -4,11 +4,12 @@ public class NaveEnemiga extends ObjetoJuegoActualizable implements Destruible {
     private boolean moviendoDerecha = true;
     private int bajarCada = 0;
     private boolean destruido = false;
-    private static final int MOVIMIENTO_HORIZONTAL = 2;
+    private int movimientoHorizontal = 2;
     private static final int MOVIMIENTO_VERTICAL = 20;
 
-    public NaveEnemiga(int x, int y, Observador observador, int anchoEspacio) {
-        super(x, y, 2, observador, anchoEspacio);
+    public NaveEnemiga(int x, int y, Observador observador, int anchoEspacio, int altoEspacio, int movimientoHorizontal) {
+        super(x, y, movimientoHorizontal, observador, anchoEspacio, altoEspacio);
+        this.movimientoHorizontal = movimientoHorizontal;
     }
     
     @Override
@@ -32,9 +33,9 @@ public class NaveEnemiga extends ObjetoJuegoActualizable implements Destruible {
             moviendoDerecha = !moviendoDerecha;
         } else {
             if (moviendoDerecha) {
-                mover(x + MOVIMIENTO_HORIZONTAL, y);
+                mover(x + movimientoHorizontal, y);
             } else {
-                mover(x - MOVIMIENTO_HORIZONTAL, y);
+                mover(x - movimientoHorizontal, y);
             }
         }
     }
@@ -45,5 +46,9 @@ public class NaveEnemiga extends ObjetoJuegoActualizable implements Destruible {
 
     public boolean isMoviendoDerecha() {
         return moviendoDerecha;
+    }
+
+    public void setMovimientoHorizontal(int movimientoHorizontal) {
+        this.movimientoHorizontal = movimientoHorizontal;
     }
 }

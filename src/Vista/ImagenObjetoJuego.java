@@ -25,5 +25,6 @@ public abstract class ImagenObjetoJuego extends JLabel implements Observador {
     public void mover(int x, int y) {
         setBounds(x, y, ancho, alto);
         setLocation(x, y);
+        // mover sin prints de depuración
     }
 }

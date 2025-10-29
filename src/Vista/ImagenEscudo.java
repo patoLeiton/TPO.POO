@@ -32,12 +32,27 @@ public class ImagenEscudo extends ImagenObjetoJuego implements EscudoObservador 
     }
     
     @Override
+    public void actualizarVida(int vidaActual, int vidaMaxima) {
+        porcentajeVida = (float) vidaActual / vidaMaxima;
+        repaint();
+    }
+    
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
         // Si no se cargó la imagen, dibuja un escudo verde
         if (!imagenCargada) {
-            g.setColor(Color.GREEN);
+            // Color basado en la vida
+            if (porcentajeVida > 0.75f) {
+                g.setColor(Color.GREEN);
+            } else if (porcentajeVida > 0.5f) {
+                g.setColor(new Color(200, 200, 0));
+            } else if (porcentajeVida > 0.25f) {
+                g.setColor(new Color(255, 150, 0));
+            } else {
+                g.setColor(new Color(200, 100, 100));
+            }
             
             // Forma de escudo/bunker
             g.fillRect(5, 10, 50, 30);

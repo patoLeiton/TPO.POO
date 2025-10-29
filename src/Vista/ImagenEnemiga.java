@@ -15,18 +15,11 @@ public class ImagenEnemiga extends ImagenObjetoJuego {
         setOpaque(false);
         cargarImagen(tipo);
     }
-    
+
     private void cargarImagen(int tipo) {
+        String rutaImagen;
+        rutaImagen = "image/EnemigoPez.png";
         try {
-            String rutaImagen;
-            if (tipo == 0) {
-                rutaImagen = "image/enemigo1.png";
-            } else if (tipo == 1) {
-                rutaImagen = "image/enemigo2.png";
-            } else {
-                rutaImagen = "image/enemigo3.png";
-            }
-            
             Image imagen = new ImageIcon(rutaImagen).getImage();
             if (imagen.getWidth(null) > 0) {
                 Image imagenAEscala = imagen.getScaledInstance(getAncho(), getAlto(), Image.SCALE_SMOOTH);
@@ -48,8 +41,6 @@ public class ImagenEnemiga extends ImagenObjetoJuego {
         if (!imagenCargada) {
             g.setColor(Color.WHITE);
             g.fillRect(5, 5, getAncho() - 10, getAlto() - 10);
-            
-            // Dibuja "ojos" para distinguirlos
             g.setColor(Color.BLACK);
             g.fillRect(10, 10, 8, 8);
             g.fillRect(22, 10, 8, 8);
