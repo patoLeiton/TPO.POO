@@ -145,7 +145,7 @@ public class PanelPrincipal extends JPanel {
         }
 
         // Dibujar puntuación
-        g.setColor(Color.WHITE);
+        g.setColor(Color.magenta);
         g.setFont(new Font("Monospaced", Font.BOLD, 20));
         g.drawString("PUNTUACIÓN: " + juegoController.getPuntuacion(), 20, 30);
         g.drawString("ENEMIGOS: " + juegoController.getEnemigosRestantes(), ancho - 200, 30);
@@ -153,7 +153,7 @@ public class PanelPrincipal extends JPanel {
         // Dibujar mensaje de juego terminado
         if (juegoTerminado) {
             g.setFont(new Font("Monospaced", Font.BOLD, 40));
-            g.setColor(Color.RED);
+            g.setColor(Color.MAGENTA);
             int x = (ancho - g.getFontMetrics().stringWidth(mensajeJuego)) / 2;
             g.drawString(mensajeJuego, x, alto / 2);
             
