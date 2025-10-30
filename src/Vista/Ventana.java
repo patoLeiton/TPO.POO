@@ -41,6 +41,14 @@ public class Ventana extends JFrame{
 		revalidate();
 	}
 
+	public void mostrarScores() {
+		ScoresPanel opciones = new ScoresPanel(this);
+		setContentPane(opciones);
+		pack();
+		setLocationRelativeTo(null);
+		revalidate();
+	}
+
 	public Dificultad getDificultadActual() {
 		return dificultadActual;
 	}

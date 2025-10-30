@@ -12,14 +12,6 @@ import java.io.File;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 import java.awt.Color;
-
-
-
-
-
-
-
-
 import Modelo.Dificultad;
 
 public class MainMenu extends JPanel {
@@ -63,8 +55,17 @@ public class MainMenu extends JPanel {
         });
         add(jugar);
 
+        JButton scores = new JButton("ScoreBoard");
+        scores.setBounds(320, 240, 160, 40);
+        scores.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ventana.mostrarOpciones();
+            }
+        });
+        add(scores);
+
         JButton opciones = new JButton("Opciones");
-        opciones.setBounds(320, 240, 160, 40);
+        opciones.setBounds(320, 300, 160, 40);
         opciones.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ventana.mostrarOpciones();
@@ -73,7 +74,7 @@ public class MainMenu extends JPanel {
         add(opciones);
 
         JButton salir = new JButton("Salir");
-        salir.setBounds(320, 300, 160, 40);
+        salir.setBounds(320, 360, 160, 40);
         salir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
@@ -84,14 +85,17 @@ public class MainMenu extends JPanel {
         jugar.setBackground( new Color(0xFF5C77));
         opciones.setBackground( new Color(0xFF5C77));
         salir.setBackground( new Color(0xFF5C77));
+        scores.setBackground( new Color(0xFF5C77));
 
         jugar.setFont(new Font("Monospaced", Font.ITALIC , 20));
         opciones.setFont(new Font("Monospaced", Font.ITALIC , 20));
         salir.setFont(new Font("Monospaced", Font.ITALIC , 20 ));
+        scores.setFont(new Font("Monospaced", Font.ITALIC , 20 ));
 
         jugar.setForeground(new Color(0xFFE6EA));
         opciones.setForeground(new Color(0xFFE6EA));
         salir.setForeground(new Color(0xFFE6EA));
+        scores.setForeground(new Color(0xFFE6EA));
 
 
     }
