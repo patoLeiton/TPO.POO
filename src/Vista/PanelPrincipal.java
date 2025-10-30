@@ -89,7 +89,10 @@ public class PanelPrincipal extends JPanel {
         probDisparoEnemigoPorTick = dificultad.getProbDisparoPorIntento();
         maxDisparosEnemigosPorTick = dificultad.getMaxDisparosPorTick();
         // ajustar velocidad de enemigos existentes y por defecto para los nuevos
-        juegoController.setVelocidadEnemigos(dificultad.getMovimientoHorizontal());
+        // Reducir la velocidad horizontal en un 10% (mantener al menos 1)
+        int baseVel = dificultad.getMovimientoHorizontal();
+        int ajustada = Math.max(1, (int) Math.round(baseVel * 0.9));
+        juegoController.setVelocidadEnemigos(ajustada);
     }
 
     private void crearEnemigos() {
