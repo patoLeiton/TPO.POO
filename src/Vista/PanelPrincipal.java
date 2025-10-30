@@ -52,7 +52,7 @@ public class PanelPrincipal extends JPanel {
         juegoController = new JuegoController(ancho, alto, posicionNaveJugadorX, posicionNaveJugadorY, imagenNave);
         // Cargar imagen de fondo si existe
         try {
-            File f = new File("image/fondo.jpg");
+            File f = new File("image/fondo2.jpg");
             if (f.exists()) {
                 fondo = ImageIO.read(f);
             }

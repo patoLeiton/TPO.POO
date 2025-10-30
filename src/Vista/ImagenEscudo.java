@@ -18,7 +18,7 @@ public class ImagenEscudo extends ImagenObjetoJuego implements EscudoObservador 
     
     private void cargarImagen() {
         try {
-            Image imagen = new ImageIcon("image/escudo.png").getImage();
+            Image imagen = new ImageIcon("image/Escudo.jpg").getImage();
             if (imagen.getWidth(null) > 0) {
                 Image imagenAEscala = imagen.getScaledInstance(getAncho(), getAlto(), Image.SCALE_SMOOTH);
                 ImageIcon icono = new ImageIcon(imagenAEscala);
