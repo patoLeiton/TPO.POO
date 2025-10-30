@@ -8,7 +8,7 @@ public abstract class ObjetoJuego{
    private Observador observador;
     	private int xMax;
     	private int yMax;
-   
+    
 
    public ObjetoJuego(int x, int y, int velocidad, Observador observador, int anchoEspacio, int altoEspacio) {
     super();  
