@@ -30,6 +30,8 @@ public class PanelPrincipal extends JPanel {
     private ImagenNave imagenNave;
     private boolean juegoTerminado = false;
     private String mensajeJuego = "";
+    private String mensajeTemporal = "";
+    private boolean esperandoOleada = false;
     private BufferedImage fondo = null;
     // Configuración de disparo enemigo: probabilidad por tick y disparos máximos por tick
     private double probDisparoEnemigoPorTick = 0.04; // por defecto
@@ -165,6 +167,14 @@ public class PanelPrincipal extends JPanel {
             x = (ancho - g.getFontMetrics().stringWidth(reinicio)) / 2;
             g.drawString(reinicio, x, alto / 2 + 50);
         }
+
+        // Dibujar mensaje temporal (ej. Oleada)
+        if (mensajeTemporal != null && !mensajeTemporal.isEmpty()) {
+            g.setFont(new Font("Monospaced", Font.BOLD, 24));
+            g.setColor(Color.YELLOW);
+            int x2 = (ancho - g.getFontMetrics().stringWidth(mensajeTemporal)) / 2;
+            g.drawString(mensajeTemporal, x2, alto / 2 - 80);
+        }
     }
 
     private void intercepatMouse() {
@@ -240,9 +250,8 @@ public class PanelPrincipal extends JPanel {
                     
                     // Verificar victoria o derrota
                     if (juegoController.hayVictoria()) {
-                        juegoTerminado = true;
-                        mensajeJuego = "¡VICTORIA!";
-                        handleGameOver();
+                        // En vez de terminar, aumentar la dificultad y generar una nueva oleada
+                        siguienteOleada();
                     } else if (juegoController.hayGameOver()) {
                         juegoTerminado = true;
                         mensajeJuego = "GAME OVER";
@@ -279,6 +288,54 @@ public class PanelPrincipal extends JPanel {
         revalidate();
         repaint();
         requestFocus();
+    }
+
+    private void siguienteOleada() {
+        if (esperandoOleada) return; // ya iniciada la cuenta regresiva
+        esperandoOleada = true;
+
+        // Preparar: incrementar dificultad (si aplica) y aplicar parámetros ahora
+        Dificultad[] vals = Dificultad.values();
+        int idx = this.dificultad.ordinal();
+        if (idx < vals.length - 1) {
+            this.dificultad = vals[idx + 1];
+        }
+        aplicarDificultad();
+
+        // Iniciar cuenta regresiva de 3 segundos antes de crear la oleada
+        final int[] contador = {3};
+        mensajeTemporal = "Preparados: " + contador[0];
+        repaint();
+
+        Timer cuenta = new Timer(1000, null);
+        cuenta.addActionListener(ev -> {
+            contador[0]--;
+            if (contador[0] > 0) {
+                mensajeTemporal = "Preparados: " + contador[0];
+                repaint();
+            } else {
+                // fin de la cuenta: crear enemigos y escudos
+                mensajeTemporal = "";
+                crearEnemigos();
+                crearEscudos();
+                // Mensaje breve de inicio
+                mensajeTemporal = "¡Nueva oleada: " + this.dificultad.name() + "!";
+                repaint();
+                // detener el timer de cuenta
+                ((Timer) ev.getSource()).stop();
+                // limpiar el mensaje de inicio después de 1.2s
+                Timer tfin = new Timer(1200, ev2 -> {
+                    mensajeTemporal = "";
+                    ((Timer) ev2.getSource()).stop();
+                    repaint();
+                });
+                tfin.setRepeats(false);
+                tfin.start();
+                esperandoOleada = false;
+            }
+        });
+        cuenta.setRepeats(true);
+        cuenta.start();
     }
 
     private void handleGameOver() {
