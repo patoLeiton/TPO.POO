@@ -42,8 +42,8 @@ public class Ventana extends JFrame{
 	}
 
 	public void mostrarScores() {
-		ScoresPanel opciones = new ScoresPanel(this);
-		setContentPane(opciones);
+		ScoresPanel scores = new ScoresPanel(this);
+		setContentPane(scores);
 		pack();
 		setLocationRelativeTo(null);
 		revalidate();

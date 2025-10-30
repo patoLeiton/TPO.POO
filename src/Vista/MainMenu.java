@@ -59,7 +59,7 @@ public class MainMenu extends JPanel {
         scores.setBounds(320, 240, 160, 40);
         scores.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ventana.mostrarOpciones();
+                ventana.mostrarScores();
             }
         });
         add(scores);

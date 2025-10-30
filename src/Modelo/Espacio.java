@@ -192,7 +192,7 @@ public class Espacio {
     public int getPuntuacion() {
         return puntuacion;
     }
-    
+
     public int getEnemigosRestantes() {
         int count = 0;
         for (NaveEnemiga enemiga : navesEnemigas) {

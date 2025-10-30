@@ -37,48 +37,29 @@ public class ScoresPanel extends JPanel {
         }
 
 
-    JLabel title = new JLabel("OPCIONES");
+    JLabel title = new JLabel("ScoreBoard");
     title.setFont(new Font("Monospaced", Font.ITALIC, 26));
     title.setBounds(320, 40, 200, 30);
     title.setForeground(java.awt.Color.WHITE);
     add(title);
 
-    combo = new JComboBox<>(Dificultad.values());
-        combo.setBounds(300, 100, 200, 30);
-        combo.setSelectedItem(ventana.getDificultadActual());
-        add(combo);
+    JButton volver = new JButton("Volver al menu");
+    volver.setBounds(320, 240, 160, 40);
+    volver.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            ventana.mostrarMenu();
+        }
+    });
+    add(volver);
 
-    JButton aplicar = new JButton("Aplicar");
-        aplicar.setBounds(300, 150, 90, 30);
-        aplicar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Dificultad sel = (Dificultad) combo.getSelectedItem();
-                if (sel != null) {
-                    ventana.setDificultadActual(sel);
-                }
-                ventana.mostrarMenu();
-            }
-        });
-        add(aplicar);
-
-        JButton volver = new JButton("Volver");
-        volver.setBounds(410, 150, 90, 30);
-        volver.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ventana.mostrarMenu();
-            }
-        });
-        add(volver);
-    combo.setBackground(new Color(0xFF5C77));
-    combo.setFont(new Font("Monospaced", Font.ITALIC, 20));
-    combo.setForeground(new Color(0xFFE6EA));
-    aplicar.setForeground(new Color(0xFFE6EA));
-    aplicar.setBackground(new Color(0xFF5C77));
-    aplicar.setFont(new Font("Monospaced", Font.ITALIC, 13));
-    volver.setForeground(new Color(0xFFE6EA));
     volver.setBackground(new Color(0xFF5C77));
-    volver.setFont(new Font("Monospaced", Font.ITALIC, 15));
-    }
+    volver.setFont(new Font("Monospaced", Font.ITALIC, 20));
+    volver.setForeground(new Color(0xFFE6EA));
+}
+
+
+
+    
  @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
