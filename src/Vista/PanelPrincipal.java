@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import Modelo.Ranking;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.Timer;
@@ -239,9 +242,11 @@ public class PanelPrincipal extends JPanel {
                     if (juegoController.hayVictoria()) {
                         juegoTerminado = true;
                         mensajeJuego = "¡VICTORIA!";
+                        handleGameOver();
                     } else if (juegoController.hayGameOver()) {
                         juegoTerminado = true;
                         mensajeJuego = "GAME OVER";
+                        handleGameOver();
                     }
                 }
                 repaint();
@@ -274,6 +279,25 @@ public class PanelPrincipal extends JPanel {
         revalidate();
         repaint();
         requestFocus();
+    }
+
+    private void handleGameOver() {
+        // Pedimos el nombre del jugador y actualizamos el ranking
+        final int puntuacion = juegoController.getPuntuacion();
+        // Estamos en el EDT (Timer), así que podemos mostrar el JOptionPane directamente
+        String nombre = JOptionPane.showInputDialog(this, "Ingrese su nombre para el ranking:", "Guardar puntuación", JOptionPane.PLAIN_MESSAGE);
+        if (nombre != null) {
+            nombre = nombre.trim();
+            if (!nombre.isEmpty()) {
+                Ranking r = new Ranking();
+                r.addOrUpdate(nombre, puntuacion);
+            }
+        }
+        // Mostrar el panel de scores
+        java.awt.Window w = SwingUtilities.getWindowAncestor(PanelPrincipal.this);
+        if (w instanceof Ventana) {
+            ((Ventana) w).mostrarScores();
+        }
     }
 
     

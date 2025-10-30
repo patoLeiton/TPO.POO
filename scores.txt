@@ -1,0 +1,2 @@
+Rosalia;0
+Negro;150

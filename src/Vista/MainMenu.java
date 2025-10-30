@@ -1,18 +1,18 @@
 package Vista;
 
+import Modelo.Dificultad;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.awt.image.BufferedImage;
-import java.awt.Graphics;
-import java.awt.Color;
-import Modelo.Dificultad;
 
 public class MainMenu extends JPanel {
     private Ventana ventana;
@@ -82,6 +82,7 @@ public class MainMenu extends JPanel {
         });
         add(salir);
         // Hacer botones más visibles en fondo oscuro
+
         jugar.setBackground( new Color(0xFF5C77));
         opciones.setBackground( new Color(0xFF5C77));
         salir.setBackground( new Color(0xFF5C77));
