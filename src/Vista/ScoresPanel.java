@@ -83,7 +83,7 @@ public class ScoresPanel extends JPanel {
         if (list.isEmpty()) {
             JLabel empty = new JLabel("No hay puntuaciones todavía.");
             empty.setFont(new Font("Monospaced", Font.PLAIN, 16));
-            empty.setForeground(Color.WHITE);
+            empty.setForeground(new Color(0xFFE6EA));
             empty.setBorder(new EmptyBorder(8,8,8,8));
             listPanel.add(empty);
         } else {
