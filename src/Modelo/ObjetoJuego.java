@@ -20,8 +20,7 @@ public abstract class ObjetoJuego{
      this.xMax = anchoEspacio - observador.getAncho();
      // calcular límite vertical usando una estimación del alto del observador si está disponible
      try {
-        // Observador no declara getAlto(), así que asumimos que el alto del espacio se pasa
-        this.yMax = altoEspacio - 1; // valor por defecto; los subtipos pueden usar otra lógica
+        this.yMax = altoEspacio - 1;
      } catch (Exception e) {
         this.yMax = altoEspacio;
      }

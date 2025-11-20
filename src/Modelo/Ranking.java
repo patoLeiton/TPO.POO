@@ -12,10 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Clase simple para administrar el ranking de jugadores.
- * Formato de persistencia: cada línea "nombre;puntaje"
- */
 public class Ranking {
     private static final String FILE_NAME = "scores.txt";
     private Map<String, Integer> scores;
@@ -61,11 +57,8 @@ public class Ranking {
         }
     }
 
-    /**
-     * Agrega o actualiza el puntaje de un jugador.
-     * Si el jugador existe y el nuevo puntaje es mayor, lo reemplaza.
-     * Si no existe, lo agrega.
-     */
+    // Agrega o actualiza el puntaje de un jugador. Si el jugador existe y el nuevo puntaje es mayor, lo reemplaza, Si no existe, lo agrega.
+     
     public synchronized void addOrUpdate(String name, int score) {
         if (name == null) return;
         name = name.trim();
@@ -77,9 +70,8 @@ public class Ranking {
         }
     }
 
-    /**
-     * Devuelve la lista de entradas ordenadas de mayor a menor puntaje.
-     */
+    // Devuelve la lista de entradas ordenadas de mayor a menor puntaje.
+
     public synchronized List<Map.Entry<String, Integer>> getSortedDesc() {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(scores.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {

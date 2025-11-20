@@ -13,9 +13,7 @@ public class Escudo extends ObjetoJuego implements Destruible {
         this.vida = VIDA_MAXIMA;
     }
     
-    /**
-     * Recibir daño genérico (cantidad en "puntos de vida").
-     */
+    //Recibir daño genérico (cantidad en "puntos de vida").
     public void recibirDanio(int cantidad) {
         vida -= cantidad;
         if (vida <= 0) {
@@ -28,16 +26,12 @@ public class Escudo extends ObjetoJuego implements Destruible {
         }
     }
 
-    /**
-     * Conveniencia: recibir daño por impacto de enemigo.
-     */
+    //Conveniencia: recibir daño por impacto de enemigo.
     public void recibirDanioPorImpactoEnemigo() {
         recibirDanio(DANIO_POR_IMPACTO_ENEMIGO);
     }
 
-    /**
-     * Conveniencia: recibir daño por impacto del jugador.
-     */
+    //Conveniencia: recibir daño por impacto de jugador.
     public void recibirDanioPorImpactoJugador() {
         recibirDanio(DANIO_POR_IMPACTO_JUGADOR);
     }

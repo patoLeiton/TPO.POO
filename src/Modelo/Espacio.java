@@ -56,9 +56,7 @@ public class Espacio {
         listaObjetoJuego.add(nave);
     }
 
-    /**
-     * Establece el movimiento horizontal para todas las naves enemigas ya existentes.
-     */
+    // Establece el movimiento horizontal para todas las naves enemigas ya existentes.
     public void setMovimientoHorizontalParaTodasNaves(int movimientoHorizontal) {
         for (NaveEnemiga n : navesEnemigas) {
             if (!n.estaDestruido()) {
@@ -173,7 +171,7 @@ public class Espacio {
                     if (obs instanceof Component) {
                         Component comp = (Component) obs;
                         if (comp.getParent() != null) {
-                            // remoción segura en el hilo de despacho de eventos
+                            // eliminacion segura en el hilo de despacho de eventos
                             SwingUtilities.invokeLater(() -> comp.getParent().remove(comp));
                         }
                     }

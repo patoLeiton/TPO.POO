@@ -1,9 +1,6 @@
 package Modelo;
 
-/**
- * Dificultad del juego con parámetros para velocidad de movimiento enemigo
- * y parámetros de disparo.
- */
+// Dificultad del juego con parámetros para velocidad de movimiento enemigo y parámetros de disparo.
 public enum Dificultad {
     CADETE(1, 0.03, 1),
     GUERRERO(2, 0.06, 2),

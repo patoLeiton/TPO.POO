@@ -30,9 +30,7 @@ public class JuegoController {
         espacio.agregarNaveEnemiga(enemiga);
     }
 
-    /**
-     * Actualiza la velocidad horizontal de todas las naves enemigas existentes.
-     */
+    // Actualiza la velocidad horizontal de todas las naves enemigas existentes.
     public void setVelocidadEnemigos(int movimientoHorizontal) {
         espacio.setMovimientoHorizontalParaTodasNaves(movimientoHorizontal);
     }
@@ -56,10 +54,10 @@ public class JuegoController {
         NaveJugador naveJugador = espacio.getNaveJugador();
         naveJugador.mover(x, naveJugador.getY());
     }
-
+    // disparo del jugador: crear Rayo con dirección hacia arriba
     public void disparar(Observador observador) {
         NaveJugador naveJugador = espacio.getNaveJugador();
-        // disparo del jugador: crear Rayo con dirección hacia arriba
+
     // Posición inicial del modelo (será reajustada visualmente después)
     int inicioX = naveJugador.getX();
     int inicioY = naveJugador.getY();
