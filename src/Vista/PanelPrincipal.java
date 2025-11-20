@@ -13,8 +13,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import Modelo.Ranking;
 import Utils.Dificultad;
+import Utils.Ranking;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
