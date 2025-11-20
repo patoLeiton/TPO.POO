@@ -14,12 +14,13 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import Modelo.Ranking;
+import Utils.Dificultad;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.Timer;
 import javax.swing.JPanel;
 import Controlador.JuegoController;
-import Modelo.Dificultad;
 
 public class PanelPrincipal extends JPanel {
 
@@ -104,8 +105,8 @@ public class PanelPrincipal extends JPanel {
     // creando enemigos
         
         // Crear 2 filas de enemigos
-        for (int fila = 0; fila < 2; fila++) {
-            for (int columna = 0; columna < 11; columna++) { //Recorrer 11 columnas de enemigos
+        for (int fila = 0; fila < 3; fila++) {
+            for (int columna = 0; columna < 5; columna++) { //Recorrer 11 columnas de enemigos
                 ImagenEnemiga imagenEnemiga = new ImagenEnemiga(0);
                 int x = startX + (columna * espacioX);
                 int y = startY + (fila * espacioY);
@@ -116,8 +117,8 @@ public class PanelPrincipal extends JPanel {
         }
         
         // No se porque no anda si saco esto
-        for (int fila = 2; fila < 4; fila++) {
-            for (int columna = 0; columna < 11; columna++) {
+        for (int fila = 3; fila < 3; fila++) {
+            for (int columna = 0; columna < 5; columna++) {
                 ImagenEnemiga imagenEnemiga = new ImagenEnemiga(1);
                 int x = startX + (columna * espacioX);
                 int y = startY + (fila * espacioY);

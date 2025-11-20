@@ -1,7 +1,8 @@
 package Vista;
 
-import Modelo.Dificultad;
 import Modelo.Ranking;
+import Utils.Dificultad;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

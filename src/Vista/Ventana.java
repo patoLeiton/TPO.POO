@@ -1,7 +1,8 @@
 package Vista;
 
 import javax.swing.JFrame;
-import Modelo.Dificultad;
+
+import Utils.Dificultad;
 
 public class Ventana extends JFrame{
 

@@ -6,7 +6,6 @@ import Modelo.NaveEnemiga;
 import Modelo.NaveJugador;
 import Modelo.Observador;
 import Modelo.Rayo;
-import Vista.ImagenObjetoJuego;
 
 public class JuegoController {
     private Espacio espacio;
@@ -67,7 +66,7 @@ public class JuegoController {
         try {
             int centroNaveX = naveJugador.getX() + (naveJugador.getObservador().getAncho() / 2);
             int posX = centroNaveX - (observador.getAncho() / 2);
-            int posY = naveJugador.getY() - (((ImagenObjetoJuego) observador).getAlto());
+            int posY = naveJugador.getY();
             observador.mover(posX, posY);
         } catch (Exception e) {
             // ignore reposition errors

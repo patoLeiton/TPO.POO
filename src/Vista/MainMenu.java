@@ -1,6 +1,5 @@
 package Vista;
 
-import Modelo.Dificultad;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,6 +12,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Utils.Dificultad;
 
 public class MainMenu extends JPanel {
     private Ventana ventana;

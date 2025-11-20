@@ -21,7 +21,7 @@ public class ImagenRayo extends ImagenObjetoJuego{
         // Aumentar el tamaño de los proyectiles para mejorar visibilidad en pantalla
         // Jugador: ligeramente más grande; Enemigo: también aumentado para ser visible sobre fondos variados
         super(esJugador ? 18 : 16, esJugador ? 54 : 48);
-        String ruta = esJugador ? "image/proyectil gato.png" : "image/proyectil pez.png";
+        String ruta = esJugador ? "image/proyectil gato.png" : "image/";
         try {
             // Cargar la imagen con ImageIO para asegurarnos que está completamente cargada
             BufferedImage original = ImageIO.read(new File(ruta));

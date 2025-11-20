@@ -1,4 +1,4 @@
-package Modelo;
+package Utils;
 
 // Dificultad del juego con parámetros para velocidad de movimiento enemigo y parámetros de disparo.
 public enum Dificultad {
